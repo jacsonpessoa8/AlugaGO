@@ -1,0 +1,31 @@
+﻿@model List<AlugaGo.Models.Customer>
+
+@{
+    ViewBag.Title = "Index";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h2>Clientes</h2>
+<p>
+    @Html.ActionLink("Novo Cliente", "New", null, new { @class = "btn btn-primary"})
+</p>
+
+<table class="table table-striped">
+    <thead>
+        <tr>
+            <th>ID</th>
+            <th>Nome</th>
+            <th>Detalhes</th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var Customer in Model.ToList())
+        {
+            <tr>
+                <td>@Customer.Id</td>
+                <td>@Customer.Name</td>
+                <td>@Html.ActionLink(" ", "Details", new { @Customer.Id }, new { @class = "glyphicon glyphicon-list" })</td>
+            </tr>
+        }
+    </tbody>
+</table>

@@ -1,0 +1,42 @@
+﻿@model AlugaGo.ViewModels.CustomerFormViewModel
+
+@{
+    ViewBag.Title = Model.Title;
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h2>@Model.Title</h2>
+
+@using (Html.BeginForm("Save", "Customers"))
+{
+    @Html.HiddenFor(m => m.Customer.Id)
+    <div class="form-group">
+        @Html.LabelFor(m => m.Customer.Name)
+        @Html.TextBoxFor(m => m.Customer.Name, new { @class = "form-control" })
+        @Html.ValidationMessageFor(m => m.Customer.Name)
+    </div>
+    <div class="form-group">
+        @Html.LabelFor(m => m.Customer.Cpf)
+        @Html.TextBoxFor(m => m.Customer.Cpf, new { @class = "form-control" })
+        @Html.ValidationMessageFor(m => m.Customer.Cpf)
+    </div>
+    <div class="form-group">
+        @Html.LabelFor(m => m.Customer.Birthdate)
+        @Html.TextBoxFor(m => m.Customer.Birthdate, "{0: dd/MM/yyyy }", new { @class = "form-control" })
+        @Html.ValidationMessageFor(m => m.Customer.Birthdate)
+    </div>
+    <button type="submit" class= " btn btn-primary">Salvar</button>
+
+    @section scripts
+    { 
+        @Scripts.Render("~/bundle/jqueryval")
+        <script type="text/javascript">
+            $(function () {
+                $.validator.methods.date = function (value, element) {
+                    Globalize.cuture("pt-BR");
+                    return this.optional(element) || Globalize.parseDate(value) !== null;
+                }
+            })
+        </script>
+    }
+}
