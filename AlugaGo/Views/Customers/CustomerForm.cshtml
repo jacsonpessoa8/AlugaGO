@@ -30,13 +30,5 @@
     @section scripts
     { 
         @Scripts.Render("~/bundle/jqueryval")
-        <script type="text/javascript">
-            $(function () {
-                $.validator.methods.date = function (value, element) {
-                    Globalize.cuture("pt-BR");
-                    return this.optional(element) || Globalize.parseDate(value) !== null;
-                }
-            })
-        </script>
     }
 }

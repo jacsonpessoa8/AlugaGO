@@ -10,12 +10,13 @@
     @Html.ActionLink("Novo Cliente", "New", null, new { @class = "btn btn-primary"})
 </p>
 
-<table class="table table-striped">
+<table id="customers" class="table table-striped">
     <thead>
         <tr>
             <th>ID</th>
             <th>Nome</th>
             <th>Detalhes</th>
+            <th>Remover</th>
         </tr>
     </thead>
     <tbody>
@@ -25,7 +26,44 @@
                 <td>@Customer.Id</td>
                 <td>@Customer.Name</td>
                 <td>@Html.ActionLink(" ", "Details", new { @Customer.Id }, new { @class = "glyphicon glyphicon-list" })</td>
+                <td>
+                    <button data-customer-id="@Customer.Id" class="btn-link js-delete glyphicon glyphicon-trash"></button>
+                </td>
             </tr>
         }
     </tbody>
 </table>
+
+@section scripts
+{
+   <script>
+       $(document).ready(function () {
+           $("#customers").on("click", ".js-delete",
+               function () {
+                   var button = $(this);
+                   /*bootbox.confirm("Tem certeza que quer remover este cliente?",
+                       function (result) {
+                           if (result) {
+                               $.ajax({
+                                   url: "/customers/delete/" + button.attr("data-customer-id"),
+                                   method: "GET",
+                                   success: function () {
+                                       button.parents("tr").remove();
+                                   }
+                               });
+                           }
+                       });*/
+                   if (confirm("Tem certeza que quer remover este cliente?")) {
+                       $.ajax({
+                           url: "/customers/delete/" + button.attr("data-customer-id"),
+                           method: "GET",
+                           success: function() {
+                               button.parents("tr").remove();
+                           }
+                       });
+                   }
+               });
+       });
+</script>
+  
+}
