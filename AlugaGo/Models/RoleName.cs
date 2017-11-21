@@ -7,6 +7,6 @@ namespace AlugaGo.Models
 {
     public static class RoleName
     {
-        
+        public const string PodeGerenciarClientes = "PodeGerenciarClientes";
     }
 }
