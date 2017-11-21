@@ -27,8 +27,10 @@ namespace AlugaGo.Controllers
         public ActionResult Index()
         {
             var customers = _context.Customers.ToList();
-
-            return View(customers);
+            if (User.IsInRole("PodeGerenciarClientes"))
+                return View(customers);
+            else
+                return View("ReadOnlyIndex", customers);
         }
 
         public ActionResult Details(int Id)
@@ -38,9 +40,13 @@ namespace AlugaGo.Controllers
             if (customer == null)
                 return HttpNotFound();
 
-            return View(customer);
+            if (User.IsInRole("PodeGerenciarClientes"))
+                return View(customer);
+            else
+                return View("ReadOnlyDetails", customer);
         }
 
+        [Authorize(Roles ="PodeGerenciarClientes")]
         public ActionResult New()
         {
             var viewModel = new CustomerFormViewModel
@@ -62,6 +68,7 @@ namespace AlugaGo.Controllers
             return RedirectToAction("Index");
         }
 
+        [Authorize(Roles = "PodeGerenciarClientes")]
         public ActionResult Edit(int id)
         {
             var customer = _context.Customers.SingleOrDefault(c => c.Id == id);
