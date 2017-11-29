@@ -25,20 +25,120 @@ namespace AlugaGo.Controllers
         // GET: Cars
         public ActionResult Index()
         {   
-            var carros = _context.Cars.ToList();
+            var cars = _context.Cars.ToList();
 
-            return View(carros);
+            if (User.IsInRole("PodeGerenciarClientes"))
+                return View(cars);
+            else
+                return View("ReadOnlyIndex", cars);
         }
 
-        // GET: Cars/Detais/1
+        // GET: Cars/Detais/id
         public ActionResult Details(int Id)
         {
-            var carro = _context.Cars.SingleOrDefault(m => m.Id == Id);
+            var cars = _context.Customers.SingleOrDefault(m => m.Id == Id);
 
-            if (carro == null)
+            if (cars == null)
                 return HttpNotFound();
 
-            return View(carro);
+            if (User.IsInRole("PodeGerenciarClientes"))
+                return View(cars);
+            else
+                return View("ReadOnlyDetails", cars);
         }
+
+        [Authorize(Roles = "PodeGerenciarClientes")]
+        public ActionResult New()
+        {
+            var viewModel = new CarFormViewModel
+            {
+                Car = new Car()
+            };
+
+            return View("CarForm", viewModel);
+        }
+        // ready
+
+        [HttpPost]
+        public ActionResult Create(Car car)
+        {
+            var autom = car;
+
+            _context.Cars.Add(autom);
+            _context.SaveChanges();
+
+            return RedirectToAction("Index");
+        }
+
+        [Authorize(Roles = "PodeGerenciarClientes")]
+        public ActionResult Edit(int id)
+        {
+            var car = _context.Customers.SingleOrDefault(c => c.Id == id);
+            if (car == null)
+            {
+                return HttpNotFound();
+            }
+
+            var viewModel = new CustomerFormViewModel
+            {
+                Customer = car,
+
+            };
+
+            return View("CarForm", viewModel);
+        }
+
+        [HttpPost]
+        public ActionResult Save(Car car)
+        {
+            if (!ModelState.IsValid)
+            {
+                var viewModel = new CarFormViewModel
+                {
+                    Car = car
+
+                };
+
+                return View("CarForm", viewModel);
+            }
+
+            if (car.Id == 0)
+            {
+                _context.Cars.Add(car);
+            }
+            else
+            {
+                var carInDb = _context.Cars.Single(c => c.Id == car.Id);
+                carInDb.Name = car.Name;
+                carInDb.Fabricante = car.Fabricante;
+                carInDb.Door = car.Door;
+                carInDb.Direction = car.Direction;
+                carInDb.Air = car.Air;
+                carInDb.EletricWindows = car.EletricWindows;
+                carInDb.SoundSystem = car.SoundSystem;
+                carInDb.Lock = car.Lock;
+                carInDb.Alarm = car.Alarm;
+                carInDb.Airbag = car.Airbag;
+                carInDb.ABS = car.ABS;
+            }
+
+            _context.SaveChanges();
+
+            return RedirectToAction("Index");
+        }
+
+        public ActionResult Delete(int id)
+        {
+            var car = _context.Cars.SingleOrDefault(c => c.Id == id);
+
+            if (car == null)
+                return HttpNotFound();
+
+            _context.Cars.Remove(car);
+            _context.SaveChanges();
+
+            return new HttpStatusCodeResult(200);
+        }
+
     }
 }

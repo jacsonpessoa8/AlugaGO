@@ -1,0 +1,29 @@
+﻿@model AlugaGo.ViewModels.CarFormViewModel
+
+@{
+    ViewBag.Title = Model.Title;
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h2>@Model.Title</h2>
+
+@using (Html.BeginForm("Save", "Cars"))
+{
+    @Html.HiddenFor(m => m.Car.Id)
+    <div class="form-group">
+        @Html.LabelFor(m => m.Car.Name)
+        @Html.TextBoxFor(m => m.Car.Name, new { @class = "form-control" })
+        @Html.ValidationMessageFor(m => m.Car.Name)
+    </div>
+    <div class="form-group">
+        @Html.LabelFor(m => m.Car.Fabricante)
+        @Html.TextBoxFor(m => m.Car.Fabricante, new { @class = "form-control" })
+        @Html.ValidationMessageFor(m => m.Car.Fabricante)
+    </div>
+    <div class="form-group">
+        @Html.LabelFor(m => m.Car.Door)
+        @Html.TextBoxFor(m => m.Car.Door, new { @class = "form-control" })
+        @Html.ValidationMessageFor(m => m.Car.Door)
+    </div>
+    <button type="submit" class=" btn btn-primary">Salvar</button>
+}

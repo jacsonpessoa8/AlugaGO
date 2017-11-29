@@ -1,17 +1,24 @@
 ﻿@model  List<AlugaGo.Models.Car>
+
 @{
     ViewBag.Title = "Index";
     Layout = "~/Views/Shared/_Layout.cshtml";
 }
 
-<h2>Index</h2>
+<h2>Lista de Carros</h2>
 
-<table class="table table-striped">
+<p>
+    @Html.ActionLink("Novo Carro", "New", null, new { @class = "btn btn-primary" })
+</p>
+
+<table id="ListCars" class="table table-striped">
     <thead>
         <tr>
             <th>ID</th>
             <th>Nome</th>
+            <th>Categoria</th>
             <th>Detalhes</th>
+            <th>Remover</th>
         </tr>
     </thead>
     <tbody>
@@ -20,9 +27,36 @@
             <tr>
                 <td>@listCar.Id</td>
                 <td>@listCar.Name</td>
-                <td>@Html.ActionLink("More", "Details", new { @listCar.Id })</td>
+                <td>teste</td>
+                <td>@Html.ActionLink(" ", "Details", new { @listCar.Id }, new { @class = "glyphicon glyphicon-list" })</td>
+                <td>
+                    <button data-car-id="@listCar.Id" class="btn-link js-delete glyphicon glyphicon-trash"></button>
+                </td>
             </tr>
         }   
 
     </tbody>
 </table>
+
+@section scripts{
+    <script>
+        $(document).ready(function () {
+            $("#ListCars").on("click", ".js-delete",
+                function () {
+                    var button = $(this);
+                    bootbox.confirm("Tem certeza que quer remover este cliente?",
+                        function (result) {
+                            if (result) {
+                                $.ajax({
+                                    url: "/cars/delete/" + button.attr("data-car-id"),
+                                    method: "GET",
+                                    success: function () {
+                                        button.parents("tr").remove();
+                                    }
+                                });
+                            }
+                        });
+                });
+        });
+    </script>
+}

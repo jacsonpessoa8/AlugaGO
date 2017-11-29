@@ -41,7 +41,7 @@
            $("#customers").on("click", ".js-delete",
                function () {
                    var button = $(this);
-                   /*bootbox.confirm("Tem certeza que quer remover este cliente?",
+                   bootbox.confirm("Tem certeza que quer remover este cliente?",
                        function (result) {
                            if (result) {
                                $.ajax({
@@ -52,8 +52,8 @@
                                    }
                                });
                            }
-                       });*/
-                   if (confirm("Tem certeza que quer remover este cliente?")) {
+                       });
+                   /*if (confirm("Tem certeza que quer remover este cliente?")) {
                        $.ajax({
                            url: "/customers/delete/" + button.attr("data-customer-id"),
                            method: "GET",
@@ -61,7 +61,7 @@
                                button.parents("tr").remove();
                            }
                        });
-                   }
+                   }*/
                });
        });
 </script>
