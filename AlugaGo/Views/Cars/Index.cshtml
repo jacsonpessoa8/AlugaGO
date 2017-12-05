@@ -16,7 +16,6 @@
         <tr>
             <th>ID</th>
             <th>Nome</th>
-            <th>Categoria</th>
             <th>Detalhes</th>
             <th>Remover</th>
         </tr>
@@ -27,7 +26,6 @@
             <tr>
                 <td>@listCar.Id</td>
                 <td>@listCar.Name</td>
-                <td>teste</td>
                 <td>@Html.ActionLink(" ", "Details", new { @listCar.Id }, new { @class = "glyphicon glyphicon-list" })</td>
                 <td>
                     <button data-car-id="@listCar.Id" class="btn-link js-delete glyphicon glyphicon-trash"></button>

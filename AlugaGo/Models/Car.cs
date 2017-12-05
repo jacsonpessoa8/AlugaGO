@@ -21,22 +21,9 @@ namespace AlugaGo.Models
         [StringLength(100)]
         public String Fabricante { get; set; }
 
-        public CarCategory Category { get; set; }
-
         public int Door { get; set; }
 
         public String Image { get; set; }
-
-        public Boolean Direction { get; set; }
-        public Boolean Air { get; set; }
-        public Boolean EletricWindows { get; set; }
-        public Boolean SoundSystem { get; set; }
-        public Boolean Lock { get; set; }
-        public Boolean Alarm { get; set; }
-        public Boolean Airbag { get; set; }
-        public Boolean ABS { get; set; }
-
-        public int CategoryId { get; set; }
 
     }
 }

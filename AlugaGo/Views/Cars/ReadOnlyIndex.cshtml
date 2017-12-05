@@ -1,0 +1,29 @@
+﻿@model  List<AlugaGo.Models.Car>
+
+@{
+    ViewBag.Title = "Index";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h2>Lista de Carros</h2>
+
+<table id="ListCars" class="table table-striped">
+    <thead>
+        <tr>
+            <th>ID</th>
+            <th>Nome</th>
+            <th>Detalhes</th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var listCar in Model.ToList())
+        {
+            <tr>
+                <td>@listCar.Id</td>
+                <td>@listCar.Name</td>
+                <td>@Html.ActionLink(" ", "Details", new { @listCar.Id }, new { @class = "glyphicon glyphicon-list" })</td>
+            </tr>
+        }   
+
+    </tbody>
+</table>

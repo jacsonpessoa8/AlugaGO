@@ -114,14 +114,6 @@ namespace AlugaGo.Controllers
                 carInDb.Name = car.Name;
                 carInDb.Fabricante = car.Fabricante;
                 carInDb.Door = car.Door;
-                carInDb.Direction = car.Direction;
-                carInDb.Air = car.Air;
-                carInDb.EletricWindows = car.EletricWindows;
-                carInDb.SoundSystem = car.SoundSystem;
-                carInDb.Lock = car.Lock;
-                carInDb.Alarm = car.Alarm;
-                carInDb.Airbag = car.Airbag;
-                carInDb.ABS = car.ABS;
             }
 
             _context.SaveChanges();

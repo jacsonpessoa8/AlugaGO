@@ -1,0 +1,29 @@
+﻿@model AlugaGo.Models.Car
+
+@{
+    ViewBag.Title = "Details";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h2>Detalhes</h2>
+
+
+<table class="table table-striped">
+    <thead>
+        <tr>
+            <th>Id</th>
+            <th>Name</th>
+            <th>Fabricante</th>
+            <th>Portas</th>
+        </tr>
+    </thead>
+    <tbody>
+        <tr>
+            <td>@Model.Id</td>
+            <td>@Model.Name</td>
+            <td>@Model.Fabricante</td>
+            <td>@Model.Door</td>
+        </tr>
+
+    </tbody>
+</table>
