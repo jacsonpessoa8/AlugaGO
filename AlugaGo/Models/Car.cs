@@ -36,5 +36,7 @@ namespace AlugaGo.Models
         public Boolean Airbag { get; set; }
         public Boolean ABS { get; set; }
 
+        public int CategoryId { get; set; }
+
     }
 }

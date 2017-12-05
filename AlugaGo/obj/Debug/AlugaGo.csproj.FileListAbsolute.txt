@@ -450,3 +450,5 @@ C:\Users\jacso\source\repos\AlugaGo\AlugaGo\obj\Debug\AlugaGo.pdb
 C:\Users\jacso\source\repos\AlugaGo\AlugaGo\obj\Debug\AlugaGo.Migrations.RuleUserMigration.resources
 C:\Users\jacso\source\repos\AlugaGo\AlugaGo\obj\Debug\AlugaGo.Migrations.UserMigration.resources
 C:\Users\jacso\source\repos\AlugaGo\AlugaGo\obj\Debug\AlugaGo.Migrations.CarCharacteristics.resources
+C:\Users\jacso\source\repos\AlugaGo\AlugaGo\obj\Debug\AlugaGo.Migrations.Migri04Dez.resources
+C:\Users\jacso\source\repos\AlugaGo\AlugaGo\obj\Debug\AlugaGo.Migrations.migri05.resources

@@ -8,6 +8,7 @@ namespace AlugaGo.ViewModels
 {
     public class CarFormViewModel
     {
+        public IEnumerable<CarCategory> Category { get; set;}
         public Car Car { get; set; }
 
         public string Title

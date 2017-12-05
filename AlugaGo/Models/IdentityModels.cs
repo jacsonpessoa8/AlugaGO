@@ -11,6 +11,7 @@ namespace AlugaGo.Models
     {
         public DbSet<Customer> Customers { get; set; }
         public DbSet<Customer> Cars { get; set; }
+        public DbSet<CarCategory> CarCategories { get; set; }
 
         public async Task<ClaimsIdentity> GenerateUserIdentityAsync(UserManager<ApplicationUser> manager)
         {
@@ -25,6 +26,7 @@ namespace AlugaGo.Models
     {
         public DbSet<Customer> Customers { get; set; }
         public DbSet<Car> Cars { get; set; }
+        public DbSet<CarCategory> CarCategories { get; set; }
 
         public ApplicationDbContext()
             : base("DefaultConnection", throwIfV1Schema: false)

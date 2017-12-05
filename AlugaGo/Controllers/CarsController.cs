@@ -36,7 +36,7 @@ namespace AlugaGo.Controllers
         // GET: Cars/Detais/id
         public ActionResult Details(int Id)
         {
-            var cars = _context.Customers.SingleOrDefault(m => m.Id == Id);
+            var cars = _context.Cars.SingleOrDefault(m => m.Id == Id);
 
             if (cars == null)
                 return HttpNotFound();
@@ -50,9 +50,11 @@ namespace AlugaGo.Controllers
         [Authorize(Roles = "PodeGerenciarClientes")]
         public ActionResult New()
         {
+            var category = _context.CarCategories.ToList();
             var viewModel = new CarFormViewModel
             {
-                Car = new Car()
+                Car = new Car(),
+                Category = category
             };
 
             return View("CarForm", viewModel);
@@ -73,16 +75,16 @@ namespace AlugaGo.Controllers
         [Authorize(Roles = "PodeGerenciarClientes")]
         public ActionResult Edit(int id)
         {
-            var car = _context.Customers.SingleOrDefault(c => c.Id == id);
+            var car = _context.Cars.SingleOrDefault(c => c.Id == id);
             if (car == null)
             {
                 return HttpNotFound();
             }
 
-            var viewModel = new CustomerFormViewModel
+            var viewModel = new CarFormViewModel
             {
-                Customer = car,
-
+                Car = car,
+                Category = _context.CarCategories.ToList()
             };
 
             return View("CarForm", viewModel);
@@ -95,8 +97,8 @@ namespace AlugaGo.Controllers
             {
                 var viewModel = new CarFormViewModel
                 {
-                    Car = car
-
+                    Car = car,
+                    Category = _context.CarCategories.ToList()
                 };
 
                 return View("CarForm", viewModel);
