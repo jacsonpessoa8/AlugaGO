@@ -25,7 +25,7 @@ namespace AlugaGo.Controllers
         // GET: Cars
         public ActionResult Index()
         {   
-            var cars = _context.Cars.ToList();
+           var cars = _context.Cars/**.Include(t => t.Category)*/.ToList();
 
             if (User.IsInRole("PodeGerenciarClientes"))
                 return View(cars);
@@ -50,7 +50,7 @@ namespace AlugaGo.Controllers
         [Authorize(Roles = "PodeGerenciarClientes")]
         public ActionResult New()
         {
-            var category = _context.CarCategories.ToList();
+            var category = _context.Categories.ToList();
             var viewModel = new CarFormViewModel
             {
                 Car = new Car(),
@@ -84,7 +84,7 @@ namespace AlugaGo.Controllers
             var viewModel = new CarFormViewModel
             {
                 Car = car,
-                Category = _context.CarCategories.ToList()
+                Category = _context.Categories.ToList()
             };
 
             return View("CarForm", viewModel);
@@ -98,7 +98,7 @@ namespace AlugaGo.Controllers
                 var viewModel = new CarFormViewModel
                 {
                     Car = car,
-                    Category = _context.CarCategories.ToList()
+                    Category = _context.Categories.ToList()
                 };
 
                 return View("CarForm", viewModel);

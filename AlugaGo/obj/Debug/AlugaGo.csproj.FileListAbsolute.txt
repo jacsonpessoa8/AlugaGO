@@ -453,3 +453,6 @@ C:\Users\jacso\source\repos\AlugaGo\AlugaGo\obj\Debug\AlugaGo.Migrations.CarChar
 C:\Users\jacso\source\repos\AlugaGo\AlugaGo\obj\Debug\AlugaGo.Migrations.Migri04Dez.resources
 C:\Users\jacso\source\repos\AlugaGo\AlugaGo\obj\Debug\AlugaGo.Migrations.migri05.resources
 C:\Users\jacso\source\repos\AlugaGo\AlugaGo\obj\Debug\AlugaGo.Migrations.updateCar.resources
+C:\Users\jacso\source\repos\AlugaGo\AlugaGo\obj\Debug\AlugaGo.Migrations.MotorcycleAdd.resources
+C:\Users\jacso\source\repos\AlugaGo\AlugaGo\obj\Debug\AlugaGo.Migrations.CategoryAdd.resources
+C:\Users\jacso\source\repos\AlugaGo\AlugaGo\obj\Debug\AlugaGo.Migrations.IncludeMotorController.resources

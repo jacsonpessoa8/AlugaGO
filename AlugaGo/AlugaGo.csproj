@@ -192,9 +192,11 @@
     <Compile Include="App_Start\Startup.Auth.cs" />
     <Compile Include="Controllers\AccountController.cs" />
     <Compile Include="Controllers\CarsController.cs" />
+    <Compile Include="Controllers\CategoriesController.cs" />
     <Compile Include="Controllers\CustomersController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\ManageController.cs" />
+    <Compile Include="Controllers\MotorcyclesController.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
@@ -274,21 +276,36 @@
     <Compile Include="Migrations\201712052258514_updateCar.Designer.cs">
       <DependentUpon>201712052258514_updateCar.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\201712052358245_MotorcycleAdd.cs" />
+    <Compile Include="Migrations\201712052358245_MotorcycleAdd.Designer.cs">
+      <DependentUpon>201712052358245_MotorcycleAdd.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201712060005097_CategoryAdd.cs" />
+    <Compile Include="Migrations\201712060005097_CategoryAdd.Designer.cs">
+      <DependentUpon>201712060005097_CategoryAdd.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201712101145592_IncludeMotorController.cs" />
+    <Compile Include="Migrations\201712101145592_IncludeMotorController.Designer.cs">
+      <DependentUpon>201712101145592_IncludeMotorController.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\AccountViewModels.cs" />
     <Compile Include="Models\Car.cs" />
-    <Compile Include="Models\CarCategory.cs" />
+    <Compile Include="Models\Category.cs" />
     <Compile Include="Models\Customer.cs" />
     <Compile Include="Models\IdentityModels.cs" />
     <Compile Include="Models\ManageViewModels.cs" />
     <Compile Include="Models\MembershipType.cs" />
+    <Compile Include="Models\Motorcycle.cs" />
     <Compile Include="Models\RoleName.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Startup.cs" />
     <Compile Include="ViewModels\CarFormViewModel.cs" />
     <Compile Include="ViewModels\CarViewModel.cs" />
+    <Compile Include="ViewModels\CategoryFormViewModel.cs" />
     <Compile Include="ViewModels\CustomerFormViewModel.cs" />
     <Compile Include="ViewModels\CustomerViewModel.cs" />
+    <Compile Include="ViewModels\MotorcycleFormViewModel.cs" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="Content\bootstrap-slate.css" />
@@ -377,6 +394,16 @@
     <Content Include="Views\Cars\CarForm.cshtml" />
     <Content Include="Views\Cars\ReadOnlyIndex.cshtml" />
     <Content Include="Views\Cars\ReadOnlyDetails.cshtml" />
+    <Content Include="Views\Motorcycles\Details.cshtml" />
+    <Content Include="Views\Motorcycles\Index.cshtml" />
+    <Content Include="Views\Motorcycles\ReadOnlyDetails.cshtml" />
+    <Content Include="Views\Motorcycles\ReadOnlyIndex.cshtml" />
+    <Content Include="Views\Motorcycles\MotorcycleForm.cshtml" />
+    <Content Include="Views\Categories\Index.cshtml" />
+    <Content Include="Views\Categories\ReadOnlyDetails.cshtml" />
+    <Content Include="Views\Categories\Details.cshtml" />
+    <Content Include="Views\Categories\ReadOnlyIndex.cshtml" />
+    <Content Include="Views\Categories\CategoryForm.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
@@ -452,6 +479,15 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\201712052258514_updateCar.resx">
       <DependentUpon>201712052258514_updateCar.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201712052358245_MotorcycleAdd.resx">
+      <DependentUpon>201712052358245_MotorcycleAdd.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201712060005097_CategoryAdd.resx">
+      <DependentUpon>201712060005097_CategoryAdd.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201712101145592_IncludeMotorController.resx">
+      <DependentUpon>201712101145592_IncludeMotorController.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>

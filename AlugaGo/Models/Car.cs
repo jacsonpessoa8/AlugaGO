@@ -21,6 +21,8 @@ namespace AlugaGo.Models
         [StringLength(100)]
         public String Fabricante { get; set; }
 
+        public Category Category { get; set; }
+
         public int Door { get; set; }
 
         public String Image { get; set; }

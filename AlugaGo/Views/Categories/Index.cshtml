@@ -1,0 +1,62 @@
+﻿@model  List<AlugaGo.Models.Category>
+
+@{
+    ViewBag.Title = "Index";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h2>Lista de Carros</h2>
+
+<p>
+    @Html.ActionLink("Novo Categoria", "New", null, new { @class = "btn btn-primary" })
+</p>
+
+<table id="ListCars" class="table table-striped">
+    <thead>
+        <tr>
+            <th>ID</th>
+            <th>Nome</th>
+            <th>Detalhes</th>
+            <th>Editar</th>
+            <th>Remover</th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var categories in Model.ToList())
+        {
+            <tr>
+                <td>@categories.Id</td>
+                <td>@categories.Name</td>
+                <td>@Html.ActionLink(" ", "Details", new { categories.Id }, new { @class = "glyphicon glyphicon-list" })</td>
+                <td>@Html.ActionLink(" ", "Edit", new { categories.Id }, new { @class = "glyphicon glyphicon-pencil" })</td>
+                <td>
+                    <button data-category-id="@categories.Id" class="btn-link js-delete glyphicon glyphicon-trash"></button>
+                </td>
+            </tr>
+        }   
+
+    </tbody>
+</table>
+
+@section scripts{
+    <script>
+        $(document).ready(function () {
+            $("#categories").on("click", ".js-delete",
+                function () {
+                    var button = $(this);
+                    bootbox.confirm("Tem certeza que quer remover este cliente?",
+                        function (result) {
+                            if (result) {
+                                $.ajax({
+                                    url: "/categories/delete/" + button.attr("data-category-id"),
+                                    method: "GET",
+                                    success: function () {
+                                        button.parents("tr").remove();
+                                    }
+                                });
+                            }
+                        });
+                });
+        });
+    </script>
+}

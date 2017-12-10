@@ -8,7 +8,7 @@ namespace AlugaGo.ViewModels
 {
     public class CarFormViewModel
     {
-        public IEnumerable<CarCategory> Category { get; set;}
+        public IEnumerable<Category> Category { get; set;}
         public Car Car { get; set; }
 
         public string Title
@@ -16,9 +16,9 @@ namespace AlugaGo.ViewModels
             get
             {
                 if (Car != null && Car.Id != 0)
-                    return "Editar Cliente";
+                    return "Editar Carro";
 
-                return "Novo Cliente";
+                return "Novo Carro";
             }
         }
     }

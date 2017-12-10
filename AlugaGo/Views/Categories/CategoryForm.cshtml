@@ -1,0 +1,24 @@
+﻿@model AlugaGo.ViewModels.CategoryFormViewModel
+
+@{
+    ViewBag.Title = Model.Title;
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h2>@Model.Title</h2>
+
+@using (Html.BeginForm("Save", "Categories"))
+{
+    @Html.HiddenFor(m => m.Category.Id)
+    <div class="form-group">
+        @Html.LabelFor(m => m.Category.Name)
+        @Html.TextBoxFor(m => m.Category.Name, new { @class = "form-control" })
+        @Html.ValidationMessageFor(m => m.Category.Name)
+    </div>
+    <div class="form-group">
+        @Html.LabelFor(m => m.Category.Price)
+        @Html.TextBoxFor(m => m.Category.Price, new { @class = "form-control" })
+        @Html.ValidationMessageFor(m => m.Category.Price)
+    </div>
+    <button type="submit" class=" btn btn-primary">Salvar</button>
+}
